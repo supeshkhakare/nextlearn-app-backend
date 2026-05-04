@@ -1,7 +1,8 @@
 from fastapi import FastAPI, BackgroundTasks
-from backend.jobs.cron_job import start_scheduler, refresh_recommendations
-from backend.config import Config
+from jobs.cron_job import start_scheduler, refresh_recommendations
+from config import Config
 import uvicorn
+import os
 
 app = FastAPI(title="YouTube Recommendation Backend")
 
@@ -24,7 +25,18 @@ def read_root():
 
 @app.get("/health")
 def health_check():
-    return "OK"
+    return {"status": "OK", "port": os.getenv("PORT", "8000")}
+
+@app.get("/debug-config")
+def debug_config():
+    """Diagnostic endpoint to check if env vars are loaded (keys masked)."""
+    return {
+        "YOUTUBE_API_KEY_SET": bool(Config.YOUTUBE_API_KEY),
+        "SUPABASE_URL_SET": bool(Config.SUPABASE_URL),
+        "SUPABASE_SERVICE_KEY_SET": bool(Config.SUPABASE_SERVICE_KEY),
+        "GEMINI_API_KEY_SET": bool(Config.GEMINI_API_KEY),
+        "PORT_ENV": os.getenv("PORT"),
+    }
 
 @app.get("/generate-all")
 async def generate_all(background_tasks: BackgroundTasks):
@@ -37,4 +49,4 @@ async def generate_all(background_tasks: BackgroundTasks):
 
 if __name__ == "__main__":
     # Ensure dependencies are installed and .env is set up before running
-    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

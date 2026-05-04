@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
-from backend.config import Config
-from backend.utils.helpers import format_duration
+from config import Config
+from utils.helpers import format_duration
 
 class YouTubeQuotaExceeded(Exception):
     """Raised when the YouTube API quota is exceeded."""

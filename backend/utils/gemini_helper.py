@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import json
 import re
-from backend.config import Config
+from config import Config
 
 class GeminiHelper:
     def __init__(self):

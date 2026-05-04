@@ -1,6 +1,6 @@
 import time
 from datetime import datetime
-from backend.services.potd_service import POTDService
+from services.potd_service import POTDService
 
 def run_daily_potd():
     """

@@ -4,3 +4,6 @@ python-dotenv
 supabase
 google-generativeai
 requests
+apscheduler
+google-api-python-client
+isodate

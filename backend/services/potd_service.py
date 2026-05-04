@@ -1,8 +1,8 @@
 import random
 from datetime import datetime, timezone
-from backend.services.db_service import DBService
-from backend.utils.gemini_helper import GeminiHelper
-from backend.utils.topic_manager import get_random_topic
+from services.db_service import DBService
+from utils.gemini_helper import GeminiHelper
+from utils.topic_manager import get_random_topic
 
 class POTDService:
     def __init__(self):

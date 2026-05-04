@@ -1,8 +1,8 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from backend.services.db_service import DBService
-from backend.services.youtube_service import YouTubeService, YouTubeQuotaExceeded, YouTubeAPIError
-from backend.utils.helpers import is_video_outdated
-from backend.jobs.potd_cron import run_daily_potd
+from services.db_service import DBService
+from services.youtube_service import YouTubeService, YouTubeQuotaExceeded, YouTubeAPIError
+from utils.helpers import is_video_outdated
+from jobs.potd_cron import run_daily_potd
 from datetime import datetime, timezone
 
 def refresh_recommendations():

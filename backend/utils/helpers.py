@@ -1,5 +1,5 @@
 from datetime import datetime, timezone, timedelta
-from backend.config import Config
+from config import Config
 
 def is_video_outdated(updated_at_str: str) -> bool:
     """

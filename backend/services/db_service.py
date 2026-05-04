@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from supabase import create_client, Client
-from backend.config import Config
+from config import Config
 
 class DBService:
     def __init__(self):
