@@ -77,12 +77,12 @@ def refresh_recommendations():
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    # Run every day at 3:00 AM (defaulting to local time of the server)
-    scheduler.add_job(refresh_recommendations, 'cron', hour=3, minute=0)
+    # Run every day at 3:00 AM Indian Standard Time (IST)
+    scheduler.add_job(refresh_recommendations, 'cron', hour=3, minute=0, timezone="Asia/Kolkata")
     
-    # Run Daily POTD at 3:30 AM
-    scheduler.add_job(run_daily_potd, 'cron', hour=3, minute=30)
+    # Run Daily POTD at 3:30 AM Indian Standard Time (IST)
+    scheduler.add_job(run_daily_potd, 'cron', hour=3, minute=30, timezone="Asia/Kolkata")
     
     scheduler.start()
-    print("Scheduler started. Jobs scheduled: Recommendations at 3:00 AM, POTD at 3:30 AM.")
+    print("Scheduler started. Jobs scheduled (IST): Recommendations at 3:00 AM, POTD at 3:30 AM.")
     return scheduler
