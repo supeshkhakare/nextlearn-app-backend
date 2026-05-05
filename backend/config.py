@@ -29,4 +29,3 @@ class Config:
         
         if missing:
             raise ValueError(f"Missing required environment variables: {', '.join(missing)}")
-print("GEMINI KEY:", Config.GEMINI_API_KEY)
